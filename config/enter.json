@@ -1,0 +1,21 @@
+{
+  "auth": [
+    {
+      "main": {
+        "js": "src/main.js",
+        "template": "templates/default.ejs",
+        "title": "",
+        "keywords": "",
+        "description": ""
+      }
+    },
+    { "doc": {
+        "js": "src/doc.js",
+        "template": "templates/default.ejs",
+        "title": "",
+        "keywords": "",
+        "description": ""
+      }
+    }
+  ]
+}
