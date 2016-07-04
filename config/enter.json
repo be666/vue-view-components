@@ -1,5 +1,5 @@
 {
-  "auth": [
+  "main": [
     {
       "main": {
         "js": "src/main.js",
@@ -9,7 +9,7 @@
         "description": ""
       }
     },
-    { "doc": {
+    { "index": {
         "js": "src/doc.js",
         "template": "templates/default.ejs",
         "title": "",

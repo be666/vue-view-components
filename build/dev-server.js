@@ -55,7 +55,7 @@ app.use('/', function (req, res, next) {
   let _originalArr = _originalUrl.split('?')
   let originalUrl = _originalArr[0]
   if (originalUrl === '/') {
-    _originalArr[0] = originalUrl + 'doc.html';
+    _originalArr[0] = originalUrl + 'index.html';
     return res.redirect(_originalArr.join('?'))
   } else if (originalUrl.indexOf('.') === -1) {
     var fPath = path.resolve(__dirname, '../static' + originalUrl + '.html')

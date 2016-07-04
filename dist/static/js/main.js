@@ -56,17 +56,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	var vueViewComponents = __webpack_require__(34);
 
-	var _index = __webpack_require__(34);
-
-	var _index2 = _interopRequireDefault(_index);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _index2.default;
+	module.exports = vueViewComponents;
 
 /***/ },
 /* 1 */
@@ -10984,6 +10976,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	      $scrollTop: {
 	        get: function get() {
 	          return scrollTop.show();
+	        }
+	      },
+	      $getUUID: {
+	        get: function get(radix, len) {
+	          var chars = 'abcdefghijklmnopqrstuvwxyz'.split('');
+	          var uuid = [],
+	              i;
+	          radix = radix || chars.length;
+	          if (len) {
+	            for (i = 0; i < len; i++) {
+	              uuid[i] = chars[0 | Math.random() * radix];
+	            }
+	          } else {
+	            var r;
+
+	            uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
+	            uuid[14] = '4';
+
+	            for (i = 0; i < 36; i++) {
+	              if (!uuid[i]) {
+	                r = 0 | Math.random() * 16;
+	                uuid[i] = chars[i == 19 ? r & 0x3 | 0x8 : r];
+	              }
+	            }
+	          }
+	          return uuid.join('');
 	        }
 	      }
 	    });

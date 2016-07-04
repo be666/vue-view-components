@@ -2,16 +2,44 @@
 
 > view components for vuejs
 
-## Build Setup
+## Documentation
 
-``` bash
-# install dependencies
-npm install
+Common topics are discussed in the [docs](https://bqxu.github.io/vue-view-components). Make sure to read it!
 
-# serve with hot reload at localhost:8080
-npm run dev
+## Getting started
 
-# build for production
-npm run build
+```bash
+
+npm install vue-view-components --save
+
+```
+
+```js
+
+import vue_view_component from 'vue-view-components';
+
+...
+Vue.use(vue_view_component());
+
+```
+
+## configs
+
+### prefix (default:'i_')
+
+
+sample
+
+```js
+
+...
+Vue.use(vue_view_component({prefix:'v-'}));
+
+```
+
+```html
+
+<v-table></v-table>
+
 ```
 

@@ -1,4 +1,4 @@
 'use strict';
-import vue_components from './index.js';
+let vueViewComponents = require('./index.js');
 
-export default vue_components
+module.exports = vueViewComponents;
