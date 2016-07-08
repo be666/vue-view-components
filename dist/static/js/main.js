@@ -12050,7 +12050,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = {
 	  name: 'i_checkbox',
-	  props: ['itemList', 'choose', 'sid', 'text', 'className'],
+	  props: ['itemList', 'selected', 'id', 'text', 'className'],
 	  methods: {
 	    _change: function _change() {
 	      this.$dispatch('change');
@@ -12241,7 +12241,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = {
 	  name: 'i_radio',
-	  props: ['itemList', 'choose', 'sid', 'text']
+	  props: ['itemList', 'selected', 'id', 'text', 'className']
 	};
 
 /***/ },
@@ -13491,7 +13491,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 104 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"i-checkbox\" v-for=\"item in itemList\" v-bind:class=\"className\">\n  <input type=\"checkbox\" v-model=\"choose\" value=\"{{item[sid]}}\" v-on:change=\"_change\">\n  {{item[text]}}\n</div>\n";
+	module.exports = "\n<div class=\"i-checkbox\" v-for=\"item in itemList\" v-bind:class=\"className\">\n  <input type=\"checkbox\" v-model=\"selected\" value=\"{{item[id]}}\" v-on:change=\"_change\">\n  {{item[text]}}\n</div>\n";
 
 /***/ },
 /* 105 */
@@ -13515,7 +13515,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 108 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"i-radio\" v-for=\"item in itemList\">\n  <input type=\"radio\" v-model=\"choose\" value=\"{{item[sid]}}\">\n  {{item[text]}}\n</div>\n";
+	module.exports = "\n<div class=\"i-radio\" v-for=\"item in itemList\" v-bind:class=\"className\">\n  <input type=\"radio\" v-model=\"selected\" value=\"{{item[id]}}\">\n  {{item[text]}}\n</div>\n";
 
 /***/ },
 /* 109 */
