@@ -1,12 +1,12 @@
 <template xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
-  <ul class="am-pagination am-pagination-right">
+  <ul class="i-pagination">
     <li v-if="pageMaker.pageIndex > 1">
       <a href="javascript:void(0)" v-on:click.stop="indexClick(pageMaker.pageIndex - 1)">
         上一页
       </a>
     </li>
     <template v-for="pg in pageMaker.pages">
-      <li v-bind:class="{ 'am-active': pageMaker.pageIndex == pg }">
+      <li v-bind:class="{ 'i-active': pageMaker.pageIndex == pg }">
         <a href="javascript:void(0)" v-on:click="indexClick(pg )">
           {{pg}}
         </a>
@@ -25,17 +25,7 @@
   </ul>
 </template>
 <style>
-  .am-pagination {
-    margin: 0.5rem 0;
-  }
 
-  .am-pagination > li > a {
-    margin-bottom: 0;
-  }
-
-  .am-table > tfoot > tr > td {
-    padding: 0 .5rem;
-  }
 </style>
 <script>
   export default{

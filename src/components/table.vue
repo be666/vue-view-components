@@ -1,55 +1,35 @@
 <template xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
-  <div style="overflow-x: auto; ">
-    <table class="am-table am-table-bordered">
+  <div class="i-table">
+    <table>
       <thead>
       <tr>
-        <th>
+        <th v-if='checkboxFlag'>
           <input v-on:change="toggleAll" type="checkbox"/>
         </th>
         <template v-for="title in titleList">
-          <th v-bind:width="title.width" v-bind:class="title.className" >
+          <th v-bind:width="title.width" v-bind:class="title.className">
             {{title.text}}
           </th>
         </template>
-        <th v-if="optionList.length | gt0">
-          操作
-        </th>
       </tr>
       </thead>
-      <tbody v-if="dataList && dataList.length | gt0 ">
+      <tbody v-if="dataList && dataList.length>0 ">
       <template v-for="data in dataList">
         <tr v-on:click="rowClick($event,data)">
-          <td>
-            <input type="checkbox" v-model="checkbox" value="{{$index}}">
+          <td v-if='checkboxFlag'>
+            <input type="checkbox" v-model="checkbox" value="{{data[pk]}}">
           </td>
           <template v-for="title in titleList">
-            <td>
-              <template v-if="title.render">
-                {{{ (title.render)(data,data[title.id],$index) }}}
-              </template>
-              <template v-else>
-                {{data[title.id]}}
-              </template>
+            <td v-bind:class="title.className">
+              {{{ render(data,title,$index) }}}
             </td>
           </template>
-          <td v-if="optionList.length  | gt0">
-            <div v-for="option in optionList"
-                 class="am-btn am-btn-default {{option.className||''}}"
-                 v-on:click.stop="optionEvent(option.id,data)">
-              <template v-if="option.render">
-                {{{ (option.render)(data,$index) }}}
-              </template>
-              <template v-if="option.text">
-                {{{option.text}}}
-              </template>
-            </div>
-          </td>
         </tr>
       </template>
       </tbody>
-      <tfoot>
+      <tfoot v-if='pageMaker.totalPage'>
       <tr>
-        <td colspan="{{pageColSpan()}}">
+        <td v-bind:colspan="pageColSpan()">
           <i_pagination
             v-on:page-click="pageClick"
             :page-maker.sync="pageMaker"
@@ -64,12 +44,15 @@
 <script>
   export default {
     name: 'i_table',
-    beforeCompile() {
-      this.optionList = this.optionList || [];
-    },
     props: {
-      titleList: 'Array',
-      dataList: 'Array',
+      pk: {
+        type: String,
+        default() {
+          return 'id';
+        }
+      },
+      titleList: Array,
+      dataList: Array,
       pageMaker: {
         default(){
           return {
@@ -78,34 +61,39 @@
             totalPage: 0,
             pages: [],
             rowCount: 0,
-            sizes: 0
+            totalCount: 0
           };
         }
       },
-      checkbox: {
-        type: 'Array',
+      checkboxFlag: {
+        type: Boolean,
         default(){
-          return [];
+          return true;
         }
       },
-      optionList: {
-        type: 'Array',
+      selected: {
+        type: Array,
         default(){
           return [];
         }
       },
       pid: {
-        type: 'String',
+        type: String,
         default() {
-          return this.$tools.getUUid();
+          return this.$getUUID(5);
         }
       }
     },
     methods: {
+      render(data, title, $index){
+        if (title.render) {
+          return title.render(data, data[title['id']], $index);
+        }
+        return data[title['id']]
+      },
       pageColSpan(){
-        let optionList = this.optionList || [];
         let titleList = this.titleList || [];
-        return (optionList.length > 0) ? (titleList.length + 2) : (titleList.length + 1);
+        return this.checkboxFlag ? (titleList.length + 1) : titleList.length;
       },
       toggleAll(event) {
         this.checkbox.splice(0, this.checkbox.length);
@@ -116,13 +104,10 @@
           }
         }
       },
-      optionEvent(optionId, data) {
-        this.$dispatch('table-click', this.pid, optionId, data);
-      },
-      rowClick(event,data){
-        let target=event.target;
-        let option=target.getAttribute('data-option');
-        this.$dispatch('table-click', this.pid,option, data);
+      rowClick(event, data){
+        let target = event.target;
+        let option = target.getAttribute('data-option');
+        this.$dispatch('table-click', this.pid, option, data);
       },
       pageClick (index, size) {
         this.$dispatch('table-page-click', index, size)

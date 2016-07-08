@@ -108,6 +108,7 @@
     position: absolute;
     left: 0;
     top: 0;
+    line-height: 0;
   }
 
   .img-warp:after {
@@ -214,7 +215,7 @@
       sId: {
         type: 'String',
         default(){
-          return this.$tools.getEUID(5);
+          return this.$getUUID(5);
         }
       },
       imgUrl: {

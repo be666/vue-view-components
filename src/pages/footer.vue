@@ -1,7 +1,9 @@
 <template>
-  <div>
-    &copy;2016 vue-view-components author:bqxu
-  </div>
+  <footer>
+    <div class="i-scope i-text-al-c">
+      &copy; icss by bqxu
+    </div>
+  </footer>
 </template>
 <style>
 

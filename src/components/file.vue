@@ -1,5 +1,5 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
-  <div class="am-cf i-file-group">
+  <div class="i-cf i-file-group">
     <input type="text" placeholder="{{placeholder}}" class="i-file-field" v-model="name"
            readonly="readonly">
     <span class="i-input-group-label">
@@ -86,7 +86,7 @@
       },
       formId: {
         default(){
-          return this.$tools.getEUID();
+          return this.$getUUID(5);
         }
       }
     },

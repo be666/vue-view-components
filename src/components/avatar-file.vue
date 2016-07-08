@@ -1,5 +1,5 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
-  <div class="am-cf i-file-group">
+  <div class="i-cf i-file-group">
     <span class="i-input-group-label">
       <button class="i-file-warp" type="button">
         {{tips}}
@@ -84,7 +84,7 @@
       },
       formId: {
         default(){
-          return this.$tools.getEUID();
+          return this.$getUUID(5);
         }
       },
       showSize: {

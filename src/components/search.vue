@@ -1,5 +1,5 @@
 <template xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
-  <div class="am-cf i-input-group i-search-warp">
+  <div class="i-cf i-input-group i-search-warp">
     <input type="text" placeholder="{{placeholder}}" class="i-search-field" v-model="keyWord">
     <span class="i-input-search-label">
       <button type="button" v-on:click="searched">
@@ -59,7 +59,7 @@
       "formId": {
         type: String,
         default(){
-          return this.$tools.getUUid()
+          return this.$getUUID(5)
         }
       }
     },
