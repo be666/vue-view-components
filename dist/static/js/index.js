@@ -11127,7 +11127,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	install.component = function (shortName) {
-	  return Vue.extend(componentMap[shortName]);
+	  return componentMap[shortName];
 	};
 
 /***/ },

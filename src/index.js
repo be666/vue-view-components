@@ -91,5 +91,5 @@ install.register = function (shortName, vueComponent) {
 };
 
 install.component = function (shortName) {
-  return Vue.extend(componentMap[shortName]);
+  return componentMap[shortName];
 };
