@@ -31,12 +31,13 @@ let componentMap = {
   table_server: c_table_server,
   user_avatar: c_user_avatar
 };
+
 function install(option) {
   option = option || {prefix: "i_"};
   return function (Vue) {
     let keys = Object.keys(componentMap);
     for (let key of keys) {
-      Vue.component(`${option.prefix}${key}`, componentMap[key]);
+      Vue.component(`${option.prefix}${key}`, Vue.extend(componentMap[key]));
     }
     Object.defineProperties(Vue.prototype, {
       $dialog: {
@@ -84,3 +85,11 @@ if (window.Vue) {
   Vue.use(install());
 }
 module.exports = install;
+
+install.register = function (shortName, vueComponent) {
+  componentMap[shortName] = vueComponent;
+};
+
+install.component = function (shortName) {
+  return Vue.extend(componentMap[shortName]);
+};
