@@ -10960,6 +10960,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  table_server: c_table_server,
 	  user_avatar: c_user_avatar
 	};
+
 	function install(option) {
 	  option = option || { prefix: "i_" };
 	  return function (Vue) {
@@ -10972,7 +10973,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      for (var _iterator = (0, _getIterator3.default)(keys), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 	        var key = _step.value;
 
-	        Vue.component("" + option.prefix + key, componentMap[key]);
+	        Vue.component("" + option.prefix + key, Vue.extend(componentMap[key]));
 	      }
 	    } catch (err) {
 	      _didIteratorError = true;
@@ -11035,6 +11036,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  Vue.use(install());
 	}
 	module.exports = install;
+
+	install.register = function (shortName, vueComponent) {
+	  componentMap[shortName] = vueComponent;
+	};
+
+	install.component = function (shortName) {
+	  return Vue.extend(componentMap[shortName]);
+	};
 
 /***/ },
 /* 36 */

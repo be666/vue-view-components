@@ -1,10 +1,11 @@
 {
   "name": "vue-view-components",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "view components for vuejs",
   "author": "bqxu <bcaring@163.com>",
   "main": "dist/static/js/main.js",
   "scripts": {
+    "prepublish": "npm run build",
     "dev": "cross-env PORT=8083 node --harmony build/dev-server.js",
     "build": "node --harmony build/build.js",
     "unit": "karma start test/unit/karma.conf.js --single-run",
