@@ -1,5 +1,5 @@
 <template xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
-  <ul class="i-pagination">
+  <ul class="i-pagination {{paginationClass}}">
     <li v-if="pageMaker.pageIndex > 1">
       <a href="javascript:void(0)" v-on:click.stop="indexClick(pageMaker.pageIndex - 1)">
         上一页
@@ -41,6 +41,12 @@
             rowCount: 0,
             sizes: 0
           }
+        }
+      },
+      paginationClass: {
+        type: String,
+        default() {
+          return '';
         }
       }
     },

@@ -1,6 +1,6 @@
 <template xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
   <div class="i-table">
-    <table>
+    <table class="{{tableClass}}">
       <thead>
       <tr>
         <th v-if='checkboxFlag'>
@@ -31,6 +31,7 @@
       <tr>
         <td v-bind:colspan="pageColSpan()">
           <i_pagination
+            pagination-class="paginationClass"
             v-on:page-click="pageClick"
             :page-maker.sync="pageMaker"
           >
@@ -49,6 +50,18 @@
         type: String,
         default() {
           return 'id';
+        }
+      },
+      tableClass: {
+        type: String,
+        default() {
+          return '';
+        }
+      },
+      paginationClass: {
+        type: String,
+        default() {
+          return '';
         }
       },
       titleList: Array,

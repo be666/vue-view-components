@@ -1,5 +1,5 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
-  <div class="i-select-single" v-bind:class="[active?'i-active':'']">
+  <div class="i-select-single {{singleClass}}" v-bind:class="[active?'i-active':'']">
     <button type="button"
             v-on:click="toggle"
     >
@@ -23,6 +23,11 @@
   export default {
     name: "i_select_single",
     props: {
+      singleClass: {
+        default(){
+          return ""
+        }
+      },
       pid: {
         default(){
           return this.$getUUID(5)

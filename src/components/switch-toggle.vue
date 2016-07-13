@@ -1,5 +1,5 @@
 <template xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
-  <div class="i_switch" v-on:click='clickSwitch' v-bind:class="{'i_switch_off':!active}">
+  <div class="i_switch {{switchClass}}" v-on:click='clickSwitch' v-bind:class="{'i_switch_off':!active}">
     <span class="i_switch_left">{{open}}</span>
     <span class="i_switch_right">{{close}}</span>
   </div>
@@ -12,6 +12,11 @@
   export default{
     name: 'i_chose_btn',
     props: {
+      switchClass: {
+        default(){
+          return ''
+        }
+      },
       open: {
         default(){
           return '开'

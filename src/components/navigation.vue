@@ -1,6 +1,6 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
   <nav class="i_navigation">
-    <ul>
+    <ul class="{{avigationClass}}">
       <template v-for='nav of navList'>
         <li
           v-bind:class="[activeNav(nav)?activeClass:'']"
@@ -31,6 +31,12 @@
         type: String,
         default() {
           return 'text';
+        }
+      },
+      navigationClass: {
+        type: String,
+        default() {
+          return '';
         }
       },
       id: {

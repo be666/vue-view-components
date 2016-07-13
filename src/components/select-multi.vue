@@ -1,5 +1,5 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
-  <div class="i-select-multi">
+  <div class="i-select-multi {{multiClass}}">
     <ul v-if="itemList.length">
       <template v-for="item in itemList">
         <li
@@ -33,7 +33,12 @@
   };
   export default {
     name: "i_select_multi",
-    props:{
+    props: {
+      multiClass: {
+        default(){
+          return ''
+        }
+      },
       id: {
         default(){
           return 'id'
