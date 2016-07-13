@@ -12164,6 +12164,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return 'text';
 	      }
 	    },
+	    navigationClass: {
+	      type: String,
+	      default: function _default() {
+	        return '';
+	      }
+	    },
 	    id: {
 	      type: String,
 	      default: function _default() {
@@ -12227,6 +12233,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	          sizes: 0
 	        };
 	      }
+	    },
+	    paginationClass: {
+	      type: String,
+	      default: function _default() {
+	        return '';
+	      }
 	    }
 	  },
 	  methods: {
@@ -12250,7 +12262,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = {
 	  name: 'i_radio',
-	  props: ['itemList', 'selected', 'id', 'text', 'className']
+	  props: ['itemList', 'selected', 'id', 'text', 'radioClass']
 	};
 
 /***/ },
@@ -12321,6 +12333,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = {
 	  name: "i_select_multi",
 	  props: {
+	    multiClass: {
+	      default: function _default() {
+	        return '';
+	      }
+	    },
 	    id: {
 	      default: function _default() {
 	        return 'id';
@@ -12371,7 +12388,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 48 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -12379,6 +12396,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = {
 	  name: "i_select_single",
 	  props: {
+	    singleClass: {
+	      default: function _default() {
+	        return "";
+	      }
+	    },
 	    pid: {
 	      default: function _default() {
 	        return this.$getUUID(5);
@@ -12456,6 +12478,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = {
 	  name: 'i_chose_btn',
 	  props: {
+	    switchClass: {
+	      default: function _default() {
+	        return '';
+	      }
+	    },
 	    open: {
 	      default: function _default() {
 	        return '开';
@@ -12484,7 +12511,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -12502,6 +12529,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	      type: String,
 	      default: function _default() {
 	        return "id";
+	      }
+	    },
+	    tableServerClass: {
+	      type: String,
+	      default: function _default() {
+	        return "";
+	      }
+	    },
+	    paginationClass: {
+	      type: String,
+	      default: function _default() {
+	        return "";
+	      }
+	    },
+	    tableClass: {
+	      type: String,
+	      default: function _default() {
+	        return "";
 	      }
 	    },
 	    checkboxFlag: {
@@ -12697,6 +12742,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	      type: String,
 	      default: function _default() {
 	        return 'id';
+	      }
+	    },
+	    tableClass: {
+	      type: String,
+	      default: function _default() {
+	        return '';
+	      }
+	    },
+	    paginationClass: {
+	      type: String,
+	      default: function _default() {
+	        return '';
 	      }
 	    },
 	    titleList: Array,
@@ -13479,7 +13536,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 	// exports
 
@@ -13512,19 +13569,19 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 106 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<nav class=\"i_navigation\">\n  <ul>\n    <template v-for='nav of navList'>\n      <li\n        v-bind:class=\"[activeNav(nav)?activeClass:'']\"\n        v-on:click=\"navClick(nav)\"\n      >\n        <a>\n          {{nav[text]}}\n        </a>\n      </li>\n    </template>\n  </ul>\n</nav>\n";
+	module.exports = "\n<nav class=\"i_navigation\">\n  <ul class=\"{{avigationClass}}\">\n    <template v-for='nav of navList'>\n      <li\n        v-bind:class=\"[activeNav(nav)?activeClass:'']\"\n        v-on:click=\"navClick(nav)\"\n      >\n        <a>\n          {{nav[text]}}\n        </a>\n      </li>\n    </template>\n  </ul>\n</nav>\n";
 
 /***/ },
 /* 107 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<ul class=\"i-pagination\">\n  <li v-if=\"pageMaker.pageIndex > 1\">\n    <a href=\"javascript:void(0)\" v-on:click.stop=\"indexClick(pageMaker.pageIndex - 1)\">\n      上一页\n    </a>\n  </li>\n  <template v-for=\"pg in pageMaker.pages\">\n    <li v-bind:class=\"{ 'i-active': pageMaker.pageIndex == pg }\">\n      <a href=\"javascript:void(0)\" v-on:click=\"indexClick(pg )\">\n        {{pg}}\n      </a>\n    </li>\n  </template>\n  <li v-if=\"pageMaker.pageIndex < pageMaker.totalPage\">\n    <a href=\"javascript:void(0)\" v-on:click=\"indexClick(pageMaker.pageIndex +1 )\">\n      下一页\n    </a>\n  </li>\n  <li>\n    <a href=\"javascript:void(0)\">\n      当前{{pageMaker.rowCount}}条/共{{pageMaker.totalPage}}页\n    </a>\n  </li>\n</ul>\n";
+	module.exports = "\n<ul class=\"i-pagination {{paginationClass}}\">\n  <li v-if=\"pageMaker.pageIndex > 1\">\n    <a href=\"javascript:void(0)\" v-on:click.stop=\"indexClick(pageMaker.pageIndex - 1)\">\n      上一页\n    </a>\n  </li>\n  <template v-for=\"pg in pageMaker.pages\">\n    <li v-bind:class=\"{ 'i-active': pageMaker.pageIndex == pg }\">\n      <a href=\"javascript:void(0)\" v-on:click=\"indexClick(pg )\">\n        {{pg}}\n      </a>\n    </li>\n  </template>\n  <li v-if=\"pageMaker.pageIndex < pageMaker.totalPage\">\n    <a href=\"javascript:void(0)\" v-on:click=\"indexClick(pageMaker.pageIndex +1 )\">\n      下一页\n    </a>\n  </li>\n  <li>\n    <a href=\"javascript:void(0)\">\n      当前{{pageMaker.rowCount}}条/共{{pageMaker.totalPage}}页\n    </a>\n  </li>\n</ul>\n";
 
 /***/ },
 /* 108 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"i-radio\" v-for=\"item in itemList\" v-bind:class=\"className\">\n  <input type=\"radio\" v-model=\"selected\" value=\"{{item[id]}}\">\n  {{item[text]}}\n</div>\n";
+	module.exports = "\n<div class=\"i-radio {{radioClass}}\" v-for=\"item in itemList\" >\n  <input type=\"radio\" v-model=\"selected\" value=\"{{item[id]}}\">\n  {{item[text]}}\n</div>\n";
 
 /***/ },
 /* 109 */
@@ -13536,31 +13593,31 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 110 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"i-select-multi\">\n  <ul v-if=\"itemList.length\">\n    <template v-for=\"item in itemList\">\n      <li\n        v-on:click=\"toggle(item[id])\"\n        v-bind:class=\"{'i-active':isSelected(item[id])}\"\n      >\n        <a>\n          {{item[text]}}\n        </a>\n      </li>\n    </template>\n  </ul>\n</div>\n";
+	module.exports = "\n<div class=\"i-select-multi {{multiClass}}\">\n  <ul v-if=\"itemList.length\">\n    <template v-for=\"item in itemList\">\n      <li\n        v-on:click=\"toggle(item[id])\"\n        v-bind:class=\"{'i-active':isSelected(item[id])}\"\n      >\n        <a>\n          {{item[text]}}\n        </a>\n      </li>\n    </template>\n  </ul>\n</div>\n";
 
 /***/ },
 /* 111 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"i-select-single\" v-bind:class=\"[active?'i-active':'']\">\n  <button type=\"button\"\n          v-on:click=\"toggle\"\n  >\n    {{showText()}}\n    <span></span>\n  </button>\n  <ul v-if=\"itemList.length > 0\">\n    <template v-for=\"item in itemList\">\n      <li\n        v-on:click=\"clicked(item[id],item[text])\"\n      >\n        <a>\n          {{item[text]}}\n        </a>\n      </li>\n    </template>\n  </ul>\n</div>\n";
+	module.exports = "\n<div class=\"i-select-single {{singleClass}}\" v-bind:class=\"[active?'i-active':'']\">\n  <button type=\"button\"\n          v-on:click=\"toggle\"\n  >\n    {{showText()}}\n    <span></span>\n  </button>\n  <ul v-if=\"itemList.length > 0\">\n    <template v-for=\"item in itemList\">\n      <li\n        v-on:click=\"clicked(item[id],item[text])\"\n      >\n        <a>\n          {{item[text]}}\n        </a>\n      </li>\n    </template>\n  </ul>\n</div>\n";
 
 /***/ },
 /* 112 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"i_switch\" v-on:click='clickSwitch' v-bind:class=\"{'i_switch_off':!active}\">\n  <span class=\"i_switch_left\">{{open}}</span>\n  <span class=\"i_switch_right\">{{close}}</span>\n</div>\n";
+	module.exports = "\n<div class=\"i_switch {{switchClass}}\" v-on:click='clickSwitch' v-bind:class=\"{'i_switch_off':!active}\">\n  <span class=\"i_switch_left\">{{open}}</span>\n  <span class=\"i_switch_right\">{{close}}</span>\n</div>\n";
 
 /***/ },
 /* 113 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div>\n  <inner_table\n    v-bind:pk.sync='pk'\n    v-bind:checkbox-flag.sync='checkboxFlag'\n    v-bind:title-list.sync='titleList'\n    v-bind:data-list.sync='dataList'\n    v-on:table-page-click='pageClick'\n    v-ref:table>\n  </inner_table>\n</div>\n";
+	module.exports = "\n<div class=\"{{tableServerClass}}\">\n  <inner_table\n    pagination-class=\"paginationClass\"\n    table-class=\"tableClass\"\n    v-bind:pk.sync='pk'\n    v-bind:checkbox-flag.sync='checkboxFlag'\n    v-bind:title-list.sync='titleList'\n    v-bind:data-list.sync='dataList'\n    v-on:table-page-click='pageClick'\n    v-ref:table>\n  </inner_table>\n</div>\n";
 
 /***/ },
 /* 114 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"i-table\">\n  <table>\n    <thead>\n    <tr>\n      <th v-if='checkboxFlag'>\n        <input v-on:change=\"toggleAll\" type=\"checkbox\"/>\n      </th>\n      <template v-for=\"title in titleList\">\n        <th v-bind:width=\"title.width\" v-bind:class=\"title.className\">\n          {{title.text}}\n        </th>\n      </template>\n    </tr>\n    </thead>\n    <tbody v-if=\"dataList && dataList.length>0 \">\n    <template v-for=\"data in dataList\">\n      <tr v-on:click=\"rowClick($event,data)\">\n        <td v-if='checkboxFlag'>\n          <input type=\"checkbox\" v-model=\"checkbox\" value=\"{{data[pk]}}\">\n        </td>\n        <template v-for=\"title in titleList\">\n          <td v-bind:class=\"title.className\">\n            {{{ render(data,title,$index) }}}\n          </td>\n        </template>\n      </tr>\n    </template>\n    </tbody>\n    <tfoot v-if='pageMaker.totalPage'>\n    <tr>\n      <td v-bind:colspan=\"pageColSpan()\">\n        <i_pagination\n          v-on:page-click=\"pageClick\"\n          :page-maker.sync=\"pageMaker\"\n        >\n        </i_pagination>\n      </td>\n    </tr>\n    </tfoot>\n  </table>\n</div>\n";
+	module.exports = "\n<div class=\"i-table\">\n  <table class=\"{{tableClass}}\">\n    <thead>\n    <tr>\n      <th v-if='checkboxFlag'>\n        <input v-on:change=\"toggleAll\" type=\"checkbox\"/>\n      </th>\n      <template v-for=\"title in titleList\">\n        <th v-bind:width=\"title.width\" v-bind:class=\"title.className\">\n          {{title.text}}\n        </th>\n      </template>\n    </tr>\n    </thead>\n    <tbody v-if=\"dataList && dataList.length>0 \">\n    <template v-for=\"data in dataList\">\n      <tr v-on:click=\"rowClick($event,data)\">\n        <td v-if='checkboxFlag'>\n          <input type=\"checkbox\" v-model=\"checkbox\" value=\"{{data[pk]}}\">\n        </td>\n        <template v-for=\"title in titleList\">\n          <td v-bind:class=\"title.className\">\n            {{{ render(data,title,$index) }}}\n          </td>\n        </template>\n      </tr>\n    </template>\n    </tbody>\n    <tfoot v-if='pageMaker.totalPage'>\n    <tr>\n      <td v-bind:colspan=\"pageColSpan()\">\n        <i_pagination\n          pagination-class=\"paginationClass\"\n          v-on:page-click=\"pageClick\"\n          :page-maker.sync=\"pageMaker\"\n        >\n        </i_pagination>\n      </td>\n    </tr>\n    </tfoot>\n  </table>\n</div>\n";
 
 /***/ },
 /* 115 */
