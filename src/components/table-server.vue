@@ -1,8 +1,8 @@
 <template>
   <div class="{{tableServerClass}}">
     <inner_table
-      pagination-class="paginationClass"
-      table-class="tableClass"
+      v-bind:pagination-class="paginationClass"
+      v-bind:table-class="tableClass"
       v-bind:pk.sync='pk'
       v-bind:checkbox-flag.sync='checkboxFlag'
       v-bind:title-list.sync='titleList'

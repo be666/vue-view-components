@@ -31,7 +31,7 @@
       <tr>
         <td v-bind:colspan="pageColSpan()">
           <i_pagination
-            pagination-class="paginationClass"
+            v-bind:pagination-class="paginationClass"
             v-on:page-click="pageClick"
             :page-maker.sync="pageMaker"
           >
