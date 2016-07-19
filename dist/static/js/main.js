@@ -12574,6 +12574,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return 'count';
 	      }
 	    },
+	    skip: {
+	      type: String,
+	      default: function _default() {
+	        return 'pageSkip';
+	      }
+	    },
 	    item: {
 	      type: String,
 	      default: function _default() {
@@ -12590,6 +12596,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      type: String,
 	      default: function _default() {
 	        return 10;
+	      }
+	    },
+	    pageSkip: {
+	      type: String,
+	      default: function _default() {
+	        return null;
 	      }
 	    },
 	    totalCount: {
@@ -12656,6 +12668,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var dataUrl = self.dataUrl;
 	      dataUrl = dataUrl.replace('{' + self.index + '}', self.pageIndex);
 	      dataUrl = dataUrl.replace('{' + self.size + '}', self.pageSize);
+	      dataUrl = dataUrl.replace('{' + self.skip + '}', (self.pageIndex - 1) * self.pageSize);
 	      dataMethod.apply($http, [dataUrl, self.query, function (res, ste, req) {
 	        if (self.item) {
 	          res = res[self.item];

@@ -68,6 +68,12 @@
           return 'count'
         }
       },
+      skip: {
+        type: String,
+        default(){
+          return 'pageSkip'
+        }
+      },
       item: {
         type: String,
         default(){
@@ -84,6 +90,12 @@
         type: String,
         default(){
           return 10
+        }
+      },
+      pageSkip: {
+        type: String,
+        default(){
+          return null
         }
       },
       totalCount: {
@@ -152,6 +164,7 @@
         let dataUrl = self.dataUrl;
         dataUrl = dataUrl.replace('{' + self.index + '}', self.pageIndex);
         dataUrl = dataUrl.replace('{' + self.size + '}', self.pageSize);
+        dataUrl = dataUrl.replace('{' + self.skip + '}', (self.pageIndex - 1) * self.pageSize);
         dataMethod.apply($http, [dataUrl, self.query, function (res, ste, req) {
           if (self.item) {
             res = res[self.item];
