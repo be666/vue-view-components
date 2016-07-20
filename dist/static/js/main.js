@@ -13612,13 +13612,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 111 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"i-select-single {{singleClass}}\" v-bind:class=\"[active?'i-active':'']\">\n  <button type=\"button\"\n          v-on:click=\"toggle\"\n  >\n    {{showText()}}\n    <span></span>\n  </button>\n  <ul v-if=\"itemList.length > 0\">\n    <template v-for=\"item in itemList\">\n      <li\n        v-on:click=\"clicked(item[id],item[text])\"\n      >\n        <a>\n          {{item[text]}}\n        </a>\n      </li>\n    </template>\n  </ul>\n</div>\n";
+	module.exports = "\n<div class=\"i-select-single\" v-bind:class=\"[active?'i-active':'',singleClass]\">\n  <button type=\"button\"\n          v-on:click=\"toggle\"\n  >\n    {{showText()}}\n    <span></span>\n  </button>\n  <ul v-if=\"itemList.length > 0\">\n    <template v-for=\"item in itemList\">\n      <li\n        v-on:click=\"clicked(item[id],item[text])\"\n      >\n        <a>\n          {{item[text]}}\n        </a>\n      </li>\n    </template>\n  </ul>\n</div>\n";
 
 /***/ },
 /* 112 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"i_switch {{switchClass}}\" v-on:click='clickSwitch' v-bind:class=\"{'i_switch_off':!active}\">\n  <span class=\"i_switch_left\">{{open}}</span>\n  <span class=\"i_switch_right\">{{close}}</span>\n</div>\n";
+	module.exports = "\n<div class=\"i_switch\" v-on:click='clickSwitch' v-bind:class=\"[!active?'i_switch_off':'',switchClass]\">\n  <span class=\"i_switch_left\">{{open}}</span>\n  <span class=\"i_switch_right\">{{close}}</span>\n</div>\n";
 
 /***/ },
 /* 113 */

@@ -1,5 +1,5 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
-  <div class="i-select-single {{singleClass}}" v-bind:class="[active?'i-active':'']">
+  <div class="i-select-single" v-bind:class="[active?'i-active':'',singleClass]">
     <button type="button"
             v-on:click="toggle"
     >
