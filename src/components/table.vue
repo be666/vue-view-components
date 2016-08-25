@@ -17,7 +17,7 @@
       <template v-for="data in dataList">
         <tr v-on:click="rowClick($event,data)">
           <td v-if='checkboxFlag'>
-            <input type="checkbox" v-model="checkbox" value="{{data[pk]}}">
+            <input type="checkbox" v-model="selected" value="{{data[pk]||$index}}">
           </td>
           <template v-for="title in titleList">
             <td v-bind:class="title.className">
@@ -109,11 +109,11 @@
         return this.checkboxFlag ? (titleList.length + 1) : titleList.length;
       },
       toggleAll(event) {
-        this.checkbox.splice(0, this.checkbox.length);
+        this.selected.splice(0, this.selected.length);
         if (event.target.checked) {
           let dLength = this.dataList.length;
           for (var i = 0; i < dLength; i++) {
-            this.checkbox.push(String(i));
+            this.selected.push(this.dataList[i][this.pk]||String(i));
           }
         }
       },

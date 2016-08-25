@@ -1,6 +1,6 @@
 {
   "name": "vue-view-components",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "view components for vuejs",
   "author": "bqxu <bcaring@163.com>",
   "main": "dist/static/js/main.js",
@@ -14,7 +14,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-
+    "codemirror": "^5.17.0"
   },
   "devDependencies": {
     "babel-runtime": "^6.0.0",
@@ -62,7 +62,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/imethod/vue-components.git"
+    "url": "git+https://github.com/imethod/vue-view-components.git"
   },
   "keywords": [
     "view components",
@@ -70,7 +70,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/imethod/vue-components/issues"
+    "url": "https://github.com/imethod/vue-view-components/issues"
   },
-  "homepage": "https://github.com/imethod/vue-components#readme"
+  "homepage": "https://github.com/imethod/vue-view-components#readme"
 }
