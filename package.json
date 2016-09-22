@@ -1,9 +1,9 @@
 {
   "name": "vue-view-components",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "view components for vuejs",
   "author": "bqxu <bcaring@163.com>",
-  "main": "dist/static/js/main.js",
+  "main": "dist/static/js/vue-view-components-0.0.19.js",
   "scripts": {
     "prepublish": "npm run build",
     "dev": "cross-env PORT=8083 node --harmony build/dev-server.js",

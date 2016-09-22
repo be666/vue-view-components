@@ -1,4 +1,5 @@
 var config = require('../config')
+var version = require('../package.json').version;
 var webpack = require('webpack')
 var merge = require('webpack-merge')
 var utils = require('./utils')
@@ -20,7 +21,7 @@ let entryList = function() {
         filename: `${enter}.html`,
         template: `templates/default.ejs`,
         inject: true,
-        chunks: [`${enter}`],
+        chunks: [`${enter}-${version}`],
         moduleClass: moduleName,
         enterClass: enter.replace(new RegExp('/', 'g'), '-')
       }, x[enter])))

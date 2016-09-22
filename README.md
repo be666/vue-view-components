@@ -4,7 +4,7 @@
 
 ## Documentation
 
-Common topics are discussed in the [docs](https://bqxu.github.io/vue-view-components). Make sure to read it!
+Common topics are discussed in the [docs](https://imethod.github.io/vue-view-components). Make sure to read it!
 
 ## Getting started
 

@@ -1,5 +1,6 @@
 var path = require('path')
 var config = require('../config')
+var version = require('../package.json').version;
 var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
 
@@ -11,7 +12,7 @@ let entryList = function () {
     moduleEnterList.forEach(function (x) {
       let enter = Object.keys(x)[0];
       if (x[enter]['js']) {
-        entryList[enter] = path.resolve(__dirname, `../${x[enter]['js']}`)
+        entryList[`${enter}-${version}`] = path.resolve(__dirname, `../${x[enter]['js']}`)
       } else {
         entryList[enter] = path.resolve(__dirname, `../src/${moduleName}/${enter}.js`)
       }

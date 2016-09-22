@@ -8,6 +8,8 @@ var ora = require('ora')
 var webpack = require('webpack')
 var webpackConfig = require('./webpack.prod.conf')
 
+webpackConfig.output.publicPath='http://cdn.bcaring.cn'
+
 console.log(
   '  Tip:\n' +
   '  Built files are meant to be served over an HTTP server.\n' +

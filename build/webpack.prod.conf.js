@@ -6,6 +6,7 @@ var webpack = require('webpack')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var version = require('../package.json').version;
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
@@ -21,7 +22,7 @@ let entryList = function () {
         filename: `${enter}.html`,
         template: `templates/default.ejs`,
         inject: true,
-        chunks: ['manifest', 'vendor', `${enter}`],
+        chunks: ['manifest', 'vendor', `${enter}-${version}`],
         chunksSortMode: 'dependency',
         moduleClass: moduleName,
         enterClass: enter.replace(new RegExp('/', 'g'), '-')

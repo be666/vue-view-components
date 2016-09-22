@@ -1,16 +1,17 @@
 {
   "main": [
     {
-      "main": {
-        "js": "src/main.js",
+      "vue-view-components.doc": {
+        "filename": "index.html",
+        "js": "src/doc.js",
         "template": "templates/default.ejs",
         "title": "",
         "keywords": "",
         "description": ""
       }
     },
-    { "index": {
-        "js": "src/doc.js",
+    { "vue-view-components": {
+        "js": "src/main.js",
         "template": "templates/default.ejs",
         "title": "",
         "keywords": "",
